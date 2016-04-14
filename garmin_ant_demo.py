@@ -59,8 +59,8 @@ class HRM(event.EventCallback):
 
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
-			hr = format(ord(msg.payload[-1]))
-			print hr 
+            hr = format(ord(msg.payload[-1]))
+			print hr
             result = firebase.put('/HeartRate', None, {'HeartRate': hr})
 			print result
 
