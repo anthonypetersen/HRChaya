@@ -59,9 +59,7 @@ class HRM(event.EventCallback):
 
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
-			hr = "{}".format(ord(msg.payload[-1]))
-			print hr
-			result = firebase.put('/HeartRate', 'HeartRate', hr)
+			result = firebase.put('/HeartRate', 'HeartRate', "{}".format(ord(msg.payload[-1])))
 			print result
 
 SERIAL = '/dev/ttyUSB0'
@@ -73,4 +71,4 @@ with HRM(serial=SERIAL, netkey=NETKEY) as hrm:
         try:
             time.sleep(1)
         except KeyboardInterrupt:
-            print "Done"
+            sys.exit(0)
