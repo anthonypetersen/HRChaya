@@ -14,6 +14,8 @@ from firebase import firebase
 firebase = firebase.FirebaseApplication('https://amber-heat-6570.firebaseIO.com', None)
 class HRM(event.EventCallback):
 
+	result = ''
+	
     def __init__(self, serial, netkey):
         self.serial = serial
         self.netkey = netkey
@@ -59,7 +61,6 @@ class HRM(event.EventCallback):
 
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
-			result = ''
 			if ("{}".format(ord(msg.payload[-1])) != result): 
 				result = firebase.put('/HeartRate', 'HeartRate', "{}".format(ord(msg.payload[-1])))
 				print result
