@@ -17,9 +17,9 @@ class HRM(event.EventCallback):
 	
     def __init__(self, serial, netkey):
 		self.serial = serial
-        self.netkey = netkey
-        self.antnode = None
-        self.channel = None
+		self.netkey = netkey
+		self.antnode = None
+		self.channel = None
 
     def start(self):
         print("starting node")
