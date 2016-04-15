@@ -59,7 +59,7 @@ class HRM(event.EventCallback):
         self.channel.open()
 
 	def updateHR(newHR):
-		firebase.put('/HeartRate, 'HeartRate', newHR)
+		firebase.put('/HeartRate', 'HeartRate', newHR)
 		gc.collect()
 		
     def process(self, msg):
