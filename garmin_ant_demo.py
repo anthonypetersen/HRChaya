@@ -58,9 +58,14 @@ class HRM(event.EventCallback):
         self.channel.setFrequency(57)
         self.channel.open()
 
+	def updateHR(newHR):
+		firebase.put('/HeartRate, 'HeartRate', newHR)
+		gc.collect()
+		
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
 			print "{}".format(ord(msg.payload[-1]))
+			updateHR(ord(msg.payload[-1]))
 			
 SERIAL = '/dev/ttyUSB0'
 NETKEY = 'B9A521FBBD72C345'.decode('hex')
