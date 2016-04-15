@@ -11,15 +11,14 @@ from ant.core import driver, node, event, message, log
 from ant.core.constants import CHANNEL_TYPE_TWOWAY_RECEIVE, TIMEOUT_NEVER
 from firebase import firebase
 
-result = ''
 firebase = firebase.FirebaseApplication('https://amber-heat-6570.firebaseIO.com', None)
 class HRM(event.EventCallback):
-	
+
     def __init__(self, serial, netkey):
-		self.serial = serial
-		self.netkey = netkey
-		self.antnode = None
-		self.channel = None
+        self.serial = serial
+        self.netkey = netkey
+        self.antnode = None
+        self.channel = None
 
     def start(self):
         print("starting node")
@@ -59,11 +58,12 @@ class HRM(event.EventCallback):
         self.channel.open()
 
     def process(self, msg):
+		
         if isinstance(msg, message.ChannelBroadcastDataMessage):
-			if ("{}".format(ord(msg.payload[-1])) != result): 
-				result = firebase.put('/HeartRate', 'HeartRate', "{}".format(ord(msg.payload[-1])))
-				print result
-				del result
+			gc.collect()
+			result = firebase.put('/HeartRate', 'HeartRate', (ord(msg.payload[-1])))
+			print result
+			del result
 			gc.collect()
 
 SERIAL = '/dev/ttyUSB0'
