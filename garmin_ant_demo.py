@@ -59,9 +59,7 @@ class HRM(event.EventCallback):
 
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
-			result = firebase.put('/HeartRate', 'HeartRate', ord(msg.payload[-1]))
-			print result
-			del result
+			print firebase.put('/HeartRate', 'HeartRate', ord(msg.payload[-1]))
 			gc.collect()
 
 SERIAL = '/dev/ttyUSB0'
