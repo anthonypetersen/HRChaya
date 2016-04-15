@@ -59,8 +59,10 @@ class HRM(event.EventCallback):
 
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
-			print "{}".format(ord(msg.payload[-1]))
-		
+			firebase.put('/HeartRate', 'HeartRate', "{}".format(ord(msg.payload[-1])))
+			print result
+			del result
+			gc.collect()
 
 SERIAL = '/dev/ttyUSB0'
 NETKEY = 'B9A521FBBD72C345'.decode('hex')
