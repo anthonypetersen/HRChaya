@@ -11,13 +11,12 @@ from ant.core import driver, node, event, message, log
 from ant.core.constants import CHANNEL_TYPE_TWOWAY_RECEIVE, TIMEOUT_NEVER
 from firebase import firebase
 
+result = ''
 firebase = firebase.FirebaseApplication('https://amber-heat-6570.firebaseIO.com', None)
 class HRM(event.EventCallback):
-
-	result = ''
 	
     def __init__(self, serial, netkey):
-        self.serial = serial
+		self.serial = serial
         self.netkey = netkey
         self.antnode = None
         self.channel = None
