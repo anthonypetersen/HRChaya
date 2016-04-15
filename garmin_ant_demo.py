@@ -57,14 +57,14 @@ class HRM(event.EventCallback):
         self.channel.setPeriod(8070)
         self.channel.setFrequency(57)
         self.channel.open()
-
-	def updateHR(newHR):
-		print firebase.put('/HeartRate', 'HeartRate', newHR)
-		gc.collect()
 		
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
-			updateHR(ord(msg.payload[-1]))
+			self.updateHR(ord(msg.payload[-1]))
+	
+	def updateHR(newHR):
+		print firebase.put('/HeartRate', 'HeartRate', newHR)
+		gc.collect()
 			
 SERIAL = '/dev/ttyUSB0'
 NETKEY = 'B9A521FBBD72C345'.decode('hex')
