@@ -73,4 +73,4 @@ with HRM(serial=SERIAL, netkey=NETKEY) as hrm:
         try:
             time.sleep(1)
         except KeyboardInterrupt:
-            sys.exit(0)
+            print "Done"
