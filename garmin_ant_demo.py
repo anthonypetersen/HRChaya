@@ -59,7 +59,8 @@ class HRM(event.EventCallback):
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
                         target = open("test.txt",'w')
-                        target.write("hello")
+                        print("heart rate is {}".format(ord(msg.payload[-1])))
+                        target.write("heart rate is {}".format(ord(msg.payload[-1])))
 			
 SERIAL = '/dev/ttyUSB0'
 NETKEY = 'B9A521FBBD72C345'.decode('hex')
