@@ -59,6 +59,7 @@ class HRM(event.EventCallback):
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
                         target = open("test.txt",'w')
+                        target.write("hello")
 			
 SERIAL = '/dev/ttyUSB0'
 NETKEY = 'B9A521FBBD72C345'.decode('hex')
