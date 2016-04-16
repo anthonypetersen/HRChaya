@@ -61,7 +61,7 @@ class HRM(event.EventCallback):
     def process(self, msg):
         if isinstance(msg, message.ChannelBroadcastDataMessage):
 			test = firebase
-			print test.put('/HeartRate', 'HeartRate', ord(msg.payload[-1]))
+			print test.post('/HeartRate', 'HeartRate', ord(msg.payload[-1]))
 			del test
 			gc.collect()
 			
