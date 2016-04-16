@@ -61,7 +61,6 @@ class HRM(event.EventCallback):
 			print "here"
 			firebase = firebase.FirebaseApplication('https://amber-heat-6570.firebaseIO.com', None)
 			print firebase.put('/HeartRate', 'HeartRate', ord(msg.payload[-1]))
-			del firebase
 			print "here2"
 			
 SERIAL = '/dev/ttyUSB0'
