@@ -69,6 +69,6 @@ with HRM(serial=SERIAL, netkey=NETKEY) as hrm:
     hrm.start()
     while True:
         try:
-            time.sleep(2)
+            time.sleep(10)
         except KeyboardInterrupt:
             sys.exit(0)
